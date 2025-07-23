@@ -35,6 +35,8 @@
 
 # 5. Run the MCP-SuperAssitant npx command with config file
 
+    https://github.com/srbhptl39/MCP-SuperAssistant
+    
     npx @srbhptl39/mcp-superassistant-proxy@latest --config C:\Users\Public\github\MCP_Servers\chatgpt_web_config.json   
 
 # 6. Run Commands from Chatgpt and have fun  
