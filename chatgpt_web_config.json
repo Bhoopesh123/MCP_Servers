@@ -17,7 +17,7 @@
       ],
       "env": {
         "GRAFANA_URL": "http://host.docker.internal:3000",
-        "GRAFANA_API_KEY": "glsa_IlFTxIR4ChUnqBl8JFEs1w0OlWvsZgje_9a2452a7"
+        "GRAFANA_API_KEY": "glsa_YlNrcfm2f3HaHR4bWc3FRVvycvALOJZp_df2bcbc2"
       }
     },
     "prometheus": {
@@ -34,20 +34,21 @@
         "PROMETHEUS_URL": "http://host.docker.internal:9090"
       }
     },
-    "lokiserver": {
-    "command": "docker",
-    "args": [
-      "run",
-      "--rm",
-      "--network=host",
-      "-e", "LOKI_URL=http://host.docker.internal:3100",
-      "loki-mcp-server"
-    ],
-    "env": {},
-    "disabled": false,
-    "autoApprove": ["loki_query"]
-  }
-
+    "excel": {
+            "command": "cmd",
+            "args":   ["/c", "npx", "--yes", "@negokaz/excel-mcp-server"],
+            "env": {
+                "EXCEL_MCP_PAGING_CELLS_LIMIT": "4000"
+            }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:\\Users\\Bhoopesh Sharma\\OneDrive\\Desktop"
+      ]
+    }
 	
   }
 }

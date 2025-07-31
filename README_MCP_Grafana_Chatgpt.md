@@ -39,8 +39,7 @@
     
     npx @srbhptl39/mcp-superassistant-proxy@latest --config C:\Users\Public\github\MCP_Servers\chatgpt_web_config.json   
 
+    
 # 6. Run Commands from Chatgpt and have fun  
 
-    List users and teams
-
-
+    List datasources and teams
