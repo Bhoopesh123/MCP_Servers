@@ -17,7 +17,7 @@
       ],
       "env": {
         "GRAFANA_URL": "http://host.docker.internal:3000",
-        "GRAFANA_API_KEY": "glsa_YlNrcfm2f3HaHR4bWc3FRVvycvALOJZp_df2bcbc2"
+        "GRAFANA_API_KEY": "glsa_ML2Rt7hhn53btqh1sy54BjQliOM4YX7R_cec7e8e8"
       }
     },
     "prometheus": {
@@ -48,6 +48,10 @@
         "@modelcontextprotocol/server-filesystem",
         "C:\\Users\\Bhoopesh Sharma\\OneDrive\\Desktop"
       ]
+    },
+    "lighthouse": {
+      "command": "npx",
+      "args": ["@danielsogl/lighthouse-mcp@latest"]
     }
 	
   }
