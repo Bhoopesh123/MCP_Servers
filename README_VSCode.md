@@ -12,11 +12,15 @@
 # 3. Run the below commands to test the functionality of  LightHouse MCP server.
 
 #get_core_web_vitals Please get the web vitals from google.com 
+
 #get_performance_score Get overall performance score of google.com 
+
 #get_lcp_opportunities Find LCP optimization opportunities for google.com 
 
 #get_core_web_vitals Please get the web vitals from https://www.amazon.in/ 
+
 #get_performance_score Get overall performance score of https://www.amazon.in/ 
+
 #get_lcp_opportunities Find LCP optimization opportunities for https://www.amazon.in/ 
 
 # 4. Run the below commands to test the functionality of Excel MCP server.
