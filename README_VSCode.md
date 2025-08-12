@@ -21,7 +21,8 @@
 
 # 4. Run the below commands to test the functionality of Excel MCP server.
 
-#excel_create_table create a table in excel sheet June_2025_News.xlsx in Sheet1 with tablename test with range A1:C10
-#excel_describe_sheets Please describe excel sheet June_2025_News.xlsx
+#excel_create_table create a table in excel sheet June_2025_News.xlsx in Sheet1 with tablename test with range A1:C10 
+
+#excel_describe_sheets Please describe excel sheet C:\Users\Bhoopesh Sharma\OneDrive\Desktop\June_2025_News.xlsx
 
    
