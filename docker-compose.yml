@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      # Install LLM plugin
+      - GF_INSTALL_PLUGINS=grafana-llm-app
+      # Allow unsigned plugins
+      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=grafana-llm-app
+      # Enable AI/LLM feature flags
+      - GF_FEATURE_TOGGLES_ENABLE=llmApp,aiDataPrep,dataConnections,traceQLStreaming
+      # Preconfigure LLM App to use Ollama
+      - GF_PLUGIN_LLM_APP_PROVIDER=OpenAI
+      - GF_PLUGIN_LLM_APP_API_URL=http://ollama:11434/v1/chat/completions
+      - GF_PLUGIN_LLM_APP_MODEL=llama3
+      - GF_PLUGIN_LLM_APP_API_KEY=none
+    depends_on:
+      - prometheus
+      - ollama
+    networks:
+      - monitor-net
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - monitor-net
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
+    networks:
+      - monitor-net
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - monitor-net
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+
+networks:
+  monitor-net:
+    driver: bridge
