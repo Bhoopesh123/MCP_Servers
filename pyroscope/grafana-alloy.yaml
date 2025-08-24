@@ -89,6 +89,37 @@ data:
       format = "logfmt"
     }
 
+    prometheus.scrape "node_exporter" {  
+        targets = [{  
+            __address__ = "10.43.151.191:9100",  
+        }]  
+        forward_to = [prometheus.remote_write.default.receiver]
+        job_name   = "node_exporter"  
+    }  
+
+    prometheus.remote_write "default" {  
+        endpoint {  
+            name = "prometheus-onprem"  
+            url  = "https://prometheus-prod-13-prod-us-east-0.grafana.net/api/prom/push"  
+      
+            basic_auth {  
+                username = "1646953"  
+                password = "glc_eyJvIjoiMTE1NjExOCIsIm4iOiJzdGFjay05NjU2MjAtaG0td3JpdGUtbWV0cmljczIxIiwiayI6IjUwNTI4b1lpdDZBMDI4d05PZUZrMmdyTCIsIm0iOnsiciI6InByb2QtdXMtZWFzdC0wIn19"  
+            }  
+      
+            queue_config {  
+                capacity             = 1000  // Reduced since we're sending fewer metrics  
+                max_shards           = 50    // Reduced accordingly  
+                max_samples_per_send = 500  
+            }  
+      
+            metadata_config {  
+                max_samples_per_send = 200   // Reduced metadata  
+            }  
+        }  
+    } 
+
+
     // Discovers all kubernetes pods.
     // Relies on serviceAccountName=grafana-alloy in the pod spec for permissions.
     discovery.kubernetes "pods" {

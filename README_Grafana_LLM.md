@@ -22,7 +22,15 @@ This approach offers a key advantage over other instrumentation mechanisms in th
 
 Under the hood, this is achieved by attaching to the application at a process level and issuing commands to control profiling.
 
-# 2. Getting started
+
+# 2. Install Prometheus Node Exporter on Minikube Cluster
+
+    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    helm repo update
+    helm install node-exporter prometheus-community/prometheus-node-exporter
+
+
+# 3. Getting started with Pyroscope
 
 To use this example:
 
@@ -37,3 +45,8 @@ To use this example:
 
 After the deployment is operational, the Grafana Alloy will profile the Java application using the defined configuration.
 The example will deploy a Grafana instance in the same cluster, available via the `grafana` service at port 3000.
+
+# 4. Validate the metrics on Grafana
+To Search all of the time series data points grouping by job  in query  
+
+    count({__name__=~".+"}) by (job)
