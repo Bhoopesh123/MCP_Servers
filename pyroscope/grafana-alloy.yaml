@@ -91,7 +91,7 @@ data:
 
     prometheus.scrape "node_exporter" {  
         targets = [{  
-            __address__ = "10.43.151.191:9100",  
+            __address__ = "10.43.227.76:9100",  
         }]  
         forward_to = [prometheus.remote_write.default.receiver]
         job_name   = "node_exporter"  
