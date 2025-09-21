@@ -3,7 +3,7 @@
     Reference Documentation:
     https://github.com/grafana/mcp-grafana
 
-# 1. Enable MCP Servers which are mentioned in mcp.json
+# 1. Enable MCP Servers which are mentioned in mcp.json(mcp_bkup.json)
 
 # 2. Run the below commands to test the functionality of FileSystem MCP server.
 

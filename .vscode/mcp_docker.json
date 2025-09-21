@@ -1,0 +1,24 @@
+{
+  "servers": {
+    "grafana": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "-e",
+        "GRAFANA_URL",
+        "-e",
+        "GRAFANA_API_KEY",
+        "mcp/grafana",
+        "-t",
+        "stdio",
+        "-debug"
+      ],
+      "env": {
+        "GRAFANA_URL": "http://13.127.135.221:3000",
+        "GRAFANA_API_KEY": "glsa_CQwq6jxERJ1Vbx6vns3xbfSlIb7veYGI_9fa9281f"
+      }
+    }
+  }
+}

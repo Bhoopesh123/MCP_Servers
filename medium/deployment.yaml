@@ -1,0 +1,45 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-grafana
+  namespace: monitoring
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mcp-grafana
+  template:
+    metadata:
+      labels:
+        app: mcp-grafana
+    spec:
+      containers:
+      - name: mcp-grafana
+        image: docker.io/mcp/grafana:latest
+        ports:
+        - containerPort: 8000
+        args:
+        - "--transport"
+        - "sse"
+        - "--sse-address"
+        - "0.0.0.0:8000"
+        - "--log-level"
+        - "info"
+        envFrom:
+        - configMapRef:
+            name: mcp-grafana-config
+        - secretRef:
+            name: mcp-grafana-secret
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5

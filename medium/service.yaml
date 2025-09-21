@@ -1,0 +1,14 @@
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcp-grafana-service
+  namespace: monitoring
+spec:
+  selector:
+    app: mcp-grafana
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+  type: ClusterIP

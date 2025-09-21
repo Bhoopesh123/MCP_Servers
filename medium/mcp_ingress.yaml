@@ -1,0 +1,25 @@
+# ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mcp-grafana-ingress
+  namespace: monitoring
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  tls:
+  - hosts:
+    - mcp-grafana.bhoopeshdevops.com
+    secretName: mcp-grafana-tls
+  rules:
+  - host: mcp-grafana.bhoopeshdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mcp-grafana-service
+            port:
+              number: 80

@@ -1,58 +1,12 @@
 {
   "servers": {
     "grafana": {
-      "command": "docker",
-      "args": [
-        "run",
-        "--rm",
-        "-i",
-        "-e",
-        "GRAFANA_URL",
-        "-e",
-        "GRAFANA_API_KEY",
-        "mcp/grafana",
-        "-t",
-        "stdio",
-        "-debug"
-      ],
+      "command": "mcp-grafana",
+      "args": ["-debug"],
       "env": {
-        "GRAFANA_URL": "http://host.docker.internal:3000",
-        "GRAFANA_API_KEY": "glsa_Qalk8QQsEwCjQfmkZ6YZS5XYP2sAwteD_61030025"
-      }
-    },
-    "prometheus": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "-e",
-        "PROMETHEUS_URL",
-        "ghcr.io/pab1it0/prometheus-mcp-server:latest"
-      ],
-      "env": {
-        "PROMETHEUS_URL": "http://host.docker.internal:9090"
-      }
-    },
-    "excel": {
-            "command": "cmd",
-            "args":   ["/c", "npx", "--yes", "@negokaz/excel-mcp-server"],
-            "env": {
-                "EXCEL_MCP_PAGING_CELLS_LIMIT": "4000"
-            }
-    },
-    "filesystem": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "C:\\Users\\Bhoopesh Sharma\\OneDrive\\Desktop"
-      ]
-    },
-    "lighthouse": {
-      "command": "npx",
-      "args": ["@danielsogl/lighthouse-mcp@latest"]
+        "GRAFANA_URL": "http://13.233.74.179:3000",
+        "GRAFANA_API_KEY": "glsa_CQwq6jxERJ1Vbx6vns3xbfSlIb7veYGI_9fa9281f"
+     }
     }
-	
   }
 }
