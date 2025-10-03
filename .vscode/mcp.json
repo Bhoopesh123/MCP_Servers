@@ -4,9 +4,22 @@
       "command": "mcp-grafana",
       "args": ["-debug"],
       "env": {
-        "GRAFANA_URL": "http://13.233.74.179:3000",
-        "GRAFANA_API_KEY": "glsa_CQwq6jxERJ1Vbx6vns3xbfSlIb7veYGI_9fa9281f"
+        "GRAFANA_URL": "http://54.227.16.148:3000",
+        "GRAFANA_API_KEY": "glsa_ycvYrdr1z0x4Wu6PNXulQzzb0mJjbJ6r_2680de86"
      }
+    },
+    "tempo": {
+      "command": "go",
+      "args": ["run", "./cmd/server"],
+      "cwd": "C:\\Users\\Public\\github\\MCP_Servers\\tempo-mcp-server"
+    },
+    "loki": {
+      "command": "go",
+      "args": ["run", "./cmd/server"],
+      "cwd": "C:\\Users\\Public\\github\\MCP_Servers\\loki-mcp",
+      "env": {
+        "LOKI_URL": "http://54.227.16.148:3100"
+      }
     }
   }
 }
