@@ -20,6 +20,11 @@
       "env": {
         "LOKI_URL": "http://54.227.16.148:3100"
       }
+    },
+    "prometheus": {
+      "command": "uv",
+      "args": ["run", "./src/prometheus_mcp_server/server.py"],
+      "cwd": "C:\\Users\\Public\\github\\MCP_Servers\\prometheus-mcp-server"
     }
   }
 }
