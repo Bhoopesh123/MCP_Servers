@@ -22,9 +22,12 @@
       }
     },
     "prometheus": {
-      "command": "uv",
-      "args": ["run", "./src/prometheus_mcp_server/server.py"],
-      "cwd": "C:\\Users\\Public\\github\\MCP_Servers\\prometheus-mcp-server"
+      "command": "C:\\Users\\Public\\github\\MCP_Servers\\prometheus-mcp-server\\.venv\\Scripts\\uv.exe",
+      "args": ["run", "src\\prometheus_mcp_server\\server.py"],
+      "cwd": "C:\\Users\\Public\\github\\MCP_Servers\\prometheus-mcp-server",
+      "env": {
+        "PROMETHEUS_URL": "http://54.227.16.148:9090"
+      }
     }
   }
 }
